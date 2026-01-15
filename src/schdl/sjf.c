@@ -7,11 +7,48 @@ int main() {
     scanf("%d", &n);
 
     Process p[n];
+
     read_processes(p, n);
     init_processes(p, n);
 
-    // TODO: Aquí va la lógica del scheduler
-    
+    /* ================================
+       SJF Scheduling (No expropiativo)
+       ================================ */
+
+    int time = 0;
+    int completed = 0;
+
+    while (completed < n) {
+        int idx = -1;
+        int min_bt = 999999;
+
+        for (int i = 0; i < n; i++) {
+            if (p[i].remaining_time > 0 &&
+                p[i].arrival_time <= time &&
+                p[i].burst_time < min_bt) {
+
+                min_bt = p[i].burst_time;
+                idx = i;
+            }
+        }
+
+        if (idx == -1) {
+            time++;
+            continue;
+        }
+
+        p[idx].waiting_time = time - p[idx].arrival_time;
+        time += p[idx].burst_time;
+
+        p[idx].turnaround_time =
+            p[idx].waiting_time + p[idx].burst_time;
+
+        p[idx].remaining_time = 0;
+        completed++;
+    }
+
+    /* ================================ */
+
     print_results(p, n, "SJF Scheduling");
     return 0;
 }
