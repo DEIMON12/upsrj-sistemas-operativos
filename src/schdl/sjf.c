@@ -14,7 +14,7 @@ void sjf_schedule(Process p[], int n)
 /* ============================================================
  * DO NOT MODIFY MAIN
  * ============================================================ */
-#ifndef UNIT_TEST
+#ifdef UNIT_TEST
 int main(void)
 {
     int n;
@@ -26,7 +26,6 @@ int main(void)
     read_processes(p, n);
     init_processes(p, n);
 
-<<<<<<< HEAD
     /* ================================
        SJF Scheduling (No expropiativo)
        ================================ */
@@ -63,15 +62,7 @@ int main(void)
         completed++;
     }
 
-    /* ================================ */
-=======
-    sjf_schedule(p, n);
->>>>>>> 412d236 (Merge branch 'feature/schedulers' into develop)
 
     print_results(p, n, "SJF Scheduling");
     return 0;
 }
-<<<<<<< HEAD
-=======
-#endif
->>>>>>> 412d236 (Merge branch 'feature/schedulers' into develop)
