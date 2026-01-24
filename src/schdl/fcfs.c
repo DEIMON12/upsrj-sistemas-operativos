@@ -44,7 +44,7 @@ void fcfs_schedule(Process p[], int n)
 }
 
 /* ============================================================
- * DO NOT MODIFY MAIN
+ * DO NOT MODIFY MAINN
  * ============================================================ */
 #ifndef UNIT_TEST
 int main(void)
